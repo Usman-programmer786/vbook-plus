@@ -1,0 +1,2518 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="VBook+ - Fun English stories and reading activities for children in Grades 1 to 5.">
+
+<meta name="theme-color" content="#6c63ff"><title>VBook+ | Fun English Stories for Kids</title><style>
+
+/* =========================================================
+   VBOOK+ KIDS READING HUB
+   No frameworks required
+========================================================= */
+
+:root{
+    --primary:#6c63ff;
+    --primary-dark:#5148d9;
+    --secondary:#ff7a59;
+    --yellow:#ffd166;
+    --green:#43c59e;
+    --pink:#ff6b9d;
+    --blue:#4dabf7;
+
+    --bg:#f7f8ff;
+    --card:#ffffff;
+    --text:#25253a;
+    --muted:#6f7185;
+    --border:#e8e8f2;
+
+    --shadow:0 12px 35px rgba(45,45,80,.10);
+    --radius:22px;
+
+    --reading-size:18px;
+}
+
+/* DARK MODE */
+
+body.dark{
+    --bg:#151522;
+    --card:#202033;
+    --text:#f7f7ff;
+    --muted:#b7b7ca;
+    --border:#36364d;
+    --shadow:0 12px 35px rgba(0,0,0,.30);
+}
+
+/* RESET */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    transition:.25s;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#6c63ff,#8c7cff,#ff7a59);
+
+    color:white;
+    padding:55px 20px 75px;
+}
+
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+}
+
+.hero::before{
+    width:300px;
+    height:300px;
+    top:-150px;
+    left:-80px;
+}
+
+.hero::after{
+    width:400px;
+    height:400px;
+    bottom:-250px;
+    right:-100px;
+}
+
+.hero-content{
+    max-width:1200px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:45px;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--yellow);
+}
+
+.header-actions{
+    display:flex;
+    gap:10px;
+}
+
+.icon-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    color:white;
+    font-size:20px;
+    backdrop-filter:blur(8px);
+}
+
+.icon-btn:hover{
+    background:rgba(255,255,255,.30);
+}
+
+.hero-main{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.hero p{
+    font-size:clamp(17px,2vw,21px);
+    opacity:.94;
+    max-width:700px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+}
+
+.btn{
+    border:none;
+    border-radius:14px;
+    padding:13px 20px;
+    font-weight:800;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    background:white;
+    color:var(--primary);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.16);
+    color:white;
+    border:1px solid rgba(255,255,255,.35);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.90);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(15px);
+}
+
+.dark .nav{
+    background:rgba(21,21,34,.90);
+}
+
+.nav-inner{
+    max-width:1200px;
+    margin:auto;
+    min-height:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:8px 20px;
+}
+
+.nav-links{
+    display:flex;
+    gap:5px;
+    overflow-x:auto;
+}
+
+.nav a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:700;
+    padding:10px 14px;
+    border-radius:10px;
+    white-space:nowrap;
+}
+
+.nav a:hover{
+    background:var(--border);
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:min(1200px,calc(100% - 30px));
+    margin:auto;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:-35px;
+    position:relative;
+    z-index:5;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:var(--primary);
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    padding:55px 0;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.section-heading h2{
+    font-size:clamp(27px,4vw,38px);
+}
+
+.section-heading p{
+    color:var(--muted);
+}
+
+/* =========================================================
+   SEARCH + FILTER
+========================================================= */
+
+.controls{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    margin-bottom:30px;
+}
+
+.search-wrap{
+    position:relative;
+}
+
+.search-wrap span{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:20px;
+}
+
+#search{
+    width:100%;
+    padding:15px 18px 15px 50px;
+    border:2px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    border-radius:15px;
+    outline:none;
+}
+
+#search:focus{
+    border-color:var(--primary);
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.filter{
+    border:none;
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+    padding:9px 15px;
+    border-radius:50px;
+    font-weight:700;
+}
+
+.filter.active,
+.filter:hover{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+/* =========================================================
+   STORY GRID
+========================================================= */
+
+.story-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.story-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:.25s;
+    display:flex;
+    flex-direction:column;
+}
+
+.story-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(45,45,80,.16);
+}
+
+.story-cover{
+    min-height:185px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:75px;
+    position:relative;
+    overflow:hidden;
+}
+
+.story-cover::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    top:-80px;
+    right:-40px;
+}
+
+.grade-badge{
+    position:absolute;
+    top:14px;
+    left:14px;
+    background:white;
+    color:var(--primary);
+    padding:6px 11px;
+    border-radius:50px;
+    font-size:12px;
+    font-weight:900;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.favorite{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.90);
+    font-size:20px;
+}
+
+.favorite.active{
+    color:#ff3f72;
+}
+
+.story-body{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.story-body h3{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.story-description{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.moral{
+    background:rgba(108,99,255,.08);
+    border-left:4px solid var(--primary);
+    padding:10px 12px;
+    border-radius:8px;
+    margin-bottom:17px;
+    font-size:14px;
+}
+
+.story-actions{
+    margin-top:auto;
+    display:flex;
+    gap:8px;
+}
+
+.story-actions button{
+    flex:1;
+    border:none;
+    border-radius:11px;
+    padding:11px 8px;
+    font-weight:800;
+}
+
+.read-btn{
+    background:var(--primary);
+    color:white;
+}
+
+.audio-btn{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border)!important;
+}
+
+/* Empty */
+
+.empty{
+    text-align:center;
+    padding:50px 20px;
+    color:var(--muted);
+    grid-column:1/-1;
+}
+
+.empty div{
+    font-size:55px;
+}
+
+/* =========================================================
+   READING TOOLS
+========================================================= */
+
+.reading-tools{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.tool-btn{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:700;
+}
+
+/* =========================================================
+   PARENTS SECTION
+========================================================= */
+
+.parent-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.parent-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.parent-icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.parent-card h3{
+    margin-bottom:8px;
+}
+
+.parent-card p{
+    color:var(--muted);
+}
+
+/* =========================================================
+   DONATION
+========================================================= */
+
+.donation{
+    background:
+        linear-gradient(135deg,#ff7a59,#ff4f81);
+    color:white;
+    border-radius:28px;
+    padding:45px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+.donation-content{
+    position:relative;
+    z-index:2;
+    max-width:700px;
+}
+
+.donation h2{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.donation p{
+    opacity:.94;
+    margin-bottom:20px;
+}
+
+.tea-btn{
+    background:white;
+    color:#ff5477;
+}
+
+/* =========================================================
+   COMMENTS
+========================================================= */
+
+.comment-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:var(--shadow);
+}
+
+.form-control{
+    width:100%;
+    margin-bottom:12px;
+    padding:14px;
+    border-radius:12px;
+    border:2px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    outline:none;
+}
+
+.form-control:focus{
+    border-color:var(--primary);
+}
+
+textarea.form-control{
+    resize:vertical;
+}
+
+.comment{
+    margin-top:15px;
+    padding:15px;
+    border-radius:14px;
+    background:var(--bg);
+}
+
+.comment-name{
+    font-weight:900;
+    color:var(--primary);
+}
+
+.comment-date{
+    font-size:12px;
+    color:var(--muted);
+}
+
+.reply{
+    margin-top:8px;
+    padding:9px;
+    border-radius:8px;
+    background:rgba(67,197,158,.12);
+    font-size:14px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    backdrop-filter:blur(5px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:var(--card);
+    color:var(--text);
+    width:min(850px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:25px;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    position:relative;
+}
+
+.modal-header{
+    padding:25px 25px 10px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.close{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:var(--bg);
+    color:var(--text);
+    font-size:22px;
+    flex-shrink:0;
+}
+
+.modal-content{
+    padding:10px 25px 30px;
+}
+
+.modal-content h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.story-text{
+    font-size:var(--reading-size);
+    line-height:1.9;
+}
+
+.modal-moral{
+    margin-top:25px;
+    padding:18px;
+    border-radius:15px;
+    background:rgba(255,209,102,.15);
+    border:1px solid rgba(255,209,102,.4);
+}
+
+/* =========================================================
+   DONATION ACCOUNT
+========================================================= */
+
+.account-box{
+    background:var(--bg);
+    border:2px dashed var(--primary);
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.account-number{
+    font-size:22px;
+    font-weight:900;
+    white-space:nowrap;
+    word-break:normal;
+    overflow-wrap:normal;
+    overflow-x:auto;
+    overflow-y:hidden;
+    display:block;
+    width:100%;
+    margin:8px 0;
+    font-family:monospace;
+    letter-spacing:1px;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    margin-top:30px;
+    background:#171725;
+    color:white;
+    padding:35px 20px;
+    text-align:center;
+}
+
+.footer-logo{
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#bcbcd0;
+}
+
+.footer-links{
+    margin:18px 0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.footer-links a{
+    color:white;
+    text-decoration:none;
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#topBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    font-size:20px;
+    display:none;
+    z-index:200;
+    box-shadow:var(--shadow);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .story-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .parent-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .hero{
+        padding:35px 15px 65px;
+    }
+
+    .topbar{
+        margin-bottom:35px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+    .nav-inner{
+        padding:7px 10px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+        margin-top:-25px;
+    }
+
+    .story-grid{
+        grid-template-columns:1fr;
+    }
+
+    .parent-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:40px 0;
+    }
+
+    .section-heading{
+        display:block;
+    }
+
+    .section-heading p{
+        margin-top:5px;
+    }
+
+    .donation{
+        padding:30px 22px;
+    }
+
+    .donation h2{
+        font-size:29px;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .stats{
+        gap:9px;
+    }
+
+    .stat{
+        padding:14px 8px;
+    }
+
+    .stat strong{
+        font-size:23px;
+    }
+
+    .story-actions{
+        flex-direction:column;
+    }
+
+    .modal-content h2{
+        font-size:27px;
+    }
+
+}
+
+/* Reduce animations for accessibility */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto!important;
+        transition:none!important;
+        animation:none!important;
+    }
+
+}
+
+</style></head><body><!-- =====================================================
+     HERO
+===================================================== --><header class="hero" id="home"><div class="hero-content">
+
+    <div class="topbar">
+
+        <div class="logo">
+            VBook<span>+</span> 📚
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                id="darkModeBtn"
+                aria-label="Toggle dark mode">
+                🌙
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-main">
+
+        <h1>
+            Learning English<br>
+            can be FUN! 🚀
+        </h1>
+
+        <p>
+            Short, enjoyable English stories for young readers,
+            with morals, reading practice and fun learning tools.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#stories"
+                class="btn btn-primary">
+                📖 Start Reading
+            </a>
+
+            <a
+                href="#parents"
+                class="btn btn-secondary">
+                👨‍👩‍👧 For Parents
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</header><!-- =====================================================
+     NAV
+===================================================== --><nav class="nav"><div class="nav-inner">
+
+    <div class="nav-links">
+
+        <a href="#home">🏠 Home</a>
+
+        <a href="#stories">📚 Stories</a>
+
+        <a href="#parents">👨‍👩‍👧 Parents</a>
+
+        <a href="#comments">💬 Comments</a>
+
+        <a
+            href="https://myprofile.de.deplexo.com/"
+            target="_blank"
+            rel="noopener noreferrer">
+            👨‍💻 Developer Portfolio
+        </a>
+
+    </div>
+
+</div>
+
+</nav><main><!-- =====================================================
+     STATS
+===================================================== --><br>
+<br><section class="container"><div class="stats">
+
+    <div class="stat">
+        <strong id="storyCount">0</strong>
+        <span>Stories</span>
+    </div>
+
+    <div class="stat">
+        <strong>1–5</strong>
+        <span>Grades</span>
+    </div>
+
+    <div class="stat">
+        <strong>🔊</strong>
+        <span>Read Aloud</span>
+    </div>
+
+    <div class="stat">
+        <strong>❤️</strong>
+        <span>Favorites</span>
+    </div>
+
+</div>
+
+</section><!-- =====================================================
+     STORIES
+===================================================== --><section class="section" id="stories"><div class="container"><div class="section-heading">
+
+    <div>
+
+        <h2>📚 Pick a Story</h2>
+
+        <p>
+            Choose your grade and discover a new adventure.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="controls">
+
+    <div class="search-wrap">
+
+        <span>🔍</span>
+
+        <input
+            id="search"
+            type="search"
+            placeholder="Search stories, morals or keywords..."
+            autocomplete="off">
+
+    </div>
+
+
+    <div class="filters">
+
+        <button class="filter active" data-grade="all">
+            All
+        </button>
+
+        <button class="filter" data-grade="1">
+            Grade 1
+        </button>
+
+        <button class="filter" data-grade="2">
+            Grade 2
+        </button>
+
+        <button class="filter" data-grade="3">
+            Grade 3
+        </button>
+
+        <button class="filter" data-grade="4">
+            Grade 4
+        </button>
+
+        <button class="filter" data-grade="5">
+            Grade 5
+        </button>
+
+        <button class="filter" data-grade="favorites">
+            ❤️ Favorites
+        </button>
+
+    </div>
+
+</div>
+
+
+<div
+    id="storyList"
+    class="story-grid">
+</div>
+
+</div></section><!-- =====================================================
+     PARENTS
+===================================================== --><section
+    class="section"
+    id="parents"><div class="container"><div class="section-heading">
+
+    <div>
+
+        <h2>👨‍👩‍👧 Why Parents Love VBook+</h2>
+
+        <p>
+            Designed to make English reading easier and more enjoyable.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="parent-grid">
+
+    <div class="parent-card">
+
+        <div class="parent-icon">📖</div>
+
+        <h3>Short Reading</h3>
+
+        <p>
+            Stories are divided into simple, manageable
+            reading experiences for young learners.
+        </p>
+
+    </div>
+
+
+    <div class="parent-card">
+
+        <div class="parent-icon">🧠</div>
+
+        <h3>Positive Morals</h3>
+
+        <p>
+            Stories encourage honesty, kindness,
+            patience, courage and responsibility.
+        </p>
+
+    </div>
+
+
+    <div class="parent-card">
+
+        <div class="parent-icon">🔊</div>
+
+        <h3>Read Aloud</h3>
+
+        <p>
+            Children can listen to the story using
+            the device's built-in speech system.
+        </p>
+
+    </div>
+
+</div>
+
+</div></section><!-- =====================================================
+     DONATION
+===================================================== --><section class="section"><div class="container"><div class="donation">
+
+    <div class="donation-content">
+
+        <h2>☕ Buy the Developer a Tea</h2>
+
+        <p>
+            If VBook+ helps your child enjoy reading,
+            you can support its development with a small
+            voluntary donation.
+        </p>
+
+        <button
+            class="btn tea-btn"
+            id="donationBtn">
+            ☕ Support VBook+
+        </button>
+
+    </div>
+
+</div>
+
+</div></section><!-- =====================================================
+     COMMENTS
+===================================================== --><section
+    class="section"
+    id="comments"><div class="container"><div class="section-heading">
+
+    <div>
+
+        <h2>💬 Parent & Student Corner</h2>
+
+        <p>
+            Share your feedback about VBook+.
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="comment-box">
+
+    <form id="commentForm">
+
+        <input
+            id="name"
+            class="form-control"
+            placeholder="Your name"
+            maxlength="50"
+            required>
+
+        <textarea
+            id="msg"
+            class="form-control"
+            rows="4"
+            placeholder="Write your comment..."
+            maxlength="500"
+            required></textarea>
+
+        <button
+            type="submit"
+            class="btn"
+            style="background:var(--primary);color:white;">
+            💬 Post Comment
+        </button>
+
+    </form>
+
+
+    <div id="commentsList"></div>
+
+</div>
+
+</div></section></main><!-- =====================================================
+     STORY MODAL
+===================================================== --><div
+    class="modal"
+    id="storyModal"
+    aria-hidden="true"><div class="modal-box">
+
+    <div class="modal-header">
+
+        <div>
+
+            <div id="modalGrade"
+                 style="color:var(--primary);font-weight:800;">
+            </div>
+
+        </div>
+
+        <button
+            class="close"
+            data-close="storyModal">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-content">
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="reading-tools">
+
+            <button
+                class="tool-btn"
+                id="speakBtn">
+                🔊 Read Aloud
+            </button>
+
+            <button
+                class="tool-btn"
+                id="stopSpeakBtn">
+                ⏹ Stop
+            </button>
+
+            <button
+                class="tool-btn"
+                id="increaseFont">
+                A+
+            </button>
+
+            <button
+                class="tool-btn"
+                id="decreaseFont">
+                A−
+            </button>
+
+        </div>
+
+
+        <div
+            id="modalText"
+            class="story-text">
+        </div>
+
+
+        <div class="modal-moral">
+
+            <strong>🌟 Moral:</strong>
+
+            <span id="modalMoral"></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div><!-- =====================================================
+     DONATION MODAL
+===================================================== --><div
+    class="modal"
+    id="donationModal"
+    aria-hidden="true"><div class="modal-box">
+
+    <div class="modal-header">
+
+        <h2>☕ Support the Developer</h2>
+
+        <button
+            class="close"
+            data-close="donationModal">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-content">
+
+        <p>
+            Thank you for supporting VBook+ ❤️
+        </p>
+
+        <p style="margin-top:10px;color:var(--muted);">
+            You can send a voluntary donation using
+            the account details below.
+        </p>
+
+
+        <div class="account-box">
+
+            <strong>Payment Account</strong>
+
+            <div
+                class="account-number"
+                id="accountNumber">03004036629</div>
+
+            <p>
+                Account Name:
+                <strong>ASRAR AHMED</strong>
+            </p>
+
+            <p>
+                Payment Method:
+                <strong>Easypaisa</strong>
+            </p>
+
+
+            <button
+                class="btn"
+                id="copyAccount"
+                style="background:var(--primary);color:white;margin-top:12px;">
+                📋 Copy Account Number
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div><!-- =====================================================
+     BACK TO TOP
+===================================================== --><button
+id="topBtn"
+aria-label="Back to top">
+↑
+</button>
+
+<!-- =====================================================
+     FOOTER
+===================================================== --><footer><div class="footer-logo">
+    VBook+ 📚
+</div>
+
+<p>
+    Making English reading fun, one story at a time. ❤️
+</p>
+
+<div class="footer-links">
+
+    <a href="#home">Home</a>
+    <a href="#stories">Stories</a>
+    <a href="#parents">Parents</a>
+    <a href="#comments">Comments</a>
+
+    <a
+        href="https://myprofile.de.deplexo.com/"
+        target="_blank"
+        rel="noopener noreferrer">
+        Developer Portfolio ↗
+    </a>
+
+</div>
+
+<p>
+    © 2026 VBook+ | Educational Reading Platform
+</p>
+
+</footer><script>
+
+/* =========================================================
+   VBOOK+ DATA
+
+   These are ORIGINAL stories designed to be curriculum-friendly.
+   They are NOT copied from PTB/Oxford/Dar-e-Arqam textbooks.
+========================================================= */
+
+const stories = [
+
+{
+    id:1,
+    grade:1,
+    title:"The Little Seed",
+    emoji:"🌱",
+    description:"A little seed learns that good things take time.",
+    moral:"Be patient and keep growing.",
+    text:[
+        "A little seed was under the soil.",
+        "It was dark and quiet.",
+        "The seed wanted to see the sun.",
+        "Rain gave it water.",
+        "The warm sun gave it light.",
+        "Slowly, the seed grew a small green leaf.",
+        "The little seed was happy.",
+        "It learned that good things take time."
+    ]
+},
+
+{
+    id:2,
+    grade:1,
+    title:"Ali Shares His Lunch",
+    emoji:"🍎",
+    description:"Ali learns the joy of sharing with a friend.",
+    moral:"Sharing makes everyone happier.",
+    text:[
+        "Ali brought an apple to school.",
+        "At lunch time, he saw his friend Hamza.",
+        "Hamza had no fruit.",
+        "Ali cut the apple into two pieces.",
+        "He gave one piece to Hamza.",
+        "Both boys smiled.",
+        "They enjoyed their lunch together."
+    ]
+},
+
+{
+    id:3,
+    grade:1,
+    title:"The Lost Pencil",
+    emoji:"✏️",
+    description:"A child finds a pencil and does the right thing.",
+    moral:"Always return things that do not belong to you.",
+    text:[
+        "Sara found a blue pencil under her desk.",
+        "It was not her pencil.",
+        "She asked her classmates about it.",
+        "Soon, Ahmed said, 'That is my pencil!'",
+        "Sara gave it back to him.",
+        "Ahmed thanked her.",
+        "Sara felt proud because she had done the right thing."
+    ]
+},
+
+{
+    id:4,
+    grade:2,
+    title:"The Helpful Ant",
+    emoji:"🐜",
+    description:"A tiny ant shows that even small helpers can make a difference.",
+    moral:"Everyone can help in some way.",
+    text:[
+        "An ant saw a piece of food near a river.",
+        "The food was too heavy for one ant.",
+        "The ant called its friends.",
+        "Many ants came together.",
+        "They carried the food to their home.",
+        "The ants shared the food.",
+        "The little ant learned that teamwork makes hard work easier."
+    ]
+},
+
+{
+    id:5,
+    grade:2,
+    title:"The Rainy Day",
+    emoji:"🌧️",
+    description:"Two children turn a rainy day into a fun learning adventure.",
+    moral:"A positive mind can find joy anywhere.",
+    text:[
+        "It was raining outside.",
+        "Mina could not play in the park.",
+        "At first, she felt sad.",
+        "Her brother gave her an idea.",
+        "They made paper boats.",
+        "They counted the boats and learned about shapes.",
+        "Soon, both children were laughing.",
+        "Mina learned that a rainy day could also be fun."
+    ]
+},
+
+{
+    id:6,
+    grade:2,
+    title:"The Brave Little Bird",
+    emoji:"🐦",
+    description:"A young bird learns to be brave and ask for help.",
+    moral:"Being brave does not mean being alone.",
+    text:[
+        "A young bird was learning to fly.",
+        "One morning, it fell from a low branch.",
+        "The bird was scared.",
+        "It called its mother.",
+        "Its mother came and stayed beside it.",
+        "The little bird tried again.",
+        "This time, it flew a little farther.",
+        "The bird learned that courage grows when we keep trying."
+    ]
+},
+
+{
+    id:7,
+    grade:3,
+    title:"The Honest Shopkeeper",
+    emoji:"🏪",
+    description:"A shopkeeper discovers extra money in his cash box.",
+    moral:"Honesty builds trust.",
+    text:[
+        "Mr. Khan owned a small shop.",
+        "One evening, he counted the money.",
+        "He found extra money in the cash box.",
+        "He remembered that a customer had paid earlier.",
+        "The next morning, the customer returned.",
+        "Mr. Khan checked the receipt and returned the extra money.",
+        "The customer thanked him.",
+        "Soon, many people trusted Mr. Khan because he was honest."
+    ]
+},
+
+{
+    id:8,
+    grade:3,
+    title:"The Library Adventure",
+    emoji:"📚",
+    description:"A child discovers that books can open doors to new worlds.",
+    moral:"Reading helps us learn and imagine.",
+    text:[
+        "Zain went to the school library.",
+        "He wanted to find an adventure book.",
+        "He picked a book about oceans.",
+        "The book taught him about whales, coral reefs and deep water.",
+        "Zain became curious.",
+        "He asked his teacher many questions.",
+        "Soon, he wanted to learn more about the world.",
+        "One small book started a big adventure."
+    ]
+},
+
+{
+    id:9,
+    grade:3,
+    title:"The Broken Kite",
+    emoji:"🪁",
+    description:"A child learns patience while repairing a favorite kite.",
+    moral:"Problems become easier when we solve them step by step.",
+    text:[
+        "Bilal loved flying his red kite.",
+        "One windy afternoon, the kite broke.",
+        "Bilal felt upset.",
+        "His grandfather helped him examine it.",
+        "They repaired the paper and replaced the string.",
+        "Bilal tested the kite carefully.",
+        "Soon, it flew high again.",
+        "Bilal learned not to give up when something goes wrong."
+    ]
+},
+
+{
+    id:10,
+    grade:4,
+    title:"The Forest Promise",
+    emoji:"🌳",
+    description:"A group of children learns how small actions protect nature.",
+    moral:"Taking care of nature is everyone's responsibility.",
+    text:[
+        "A group of students visited a small forest.",
+        "They saw plastic bottles near the trees.",
+        "Their teacher explained how rubbish can hurt animals.",
+        "The students collected the waste safely.",
+        "They separated recyclable items.",
+        "Before leaving, they promised to keep their neighborhood clean.",
+        "The children understood that protecting nature begins with simple actions."
+    ]
+},
+
+{
+    id:11,
+    grade:4,
+    title:"The Power of Questions",
+    emoji:"❓",
+    description:"A curious student discovers that questions are part of learning.",
+    moral:"Curiosity is a powerful tool for learning.",
+    text:[
+        "Hassan liked asking questions.",
+        "Sometimes his classmates laughed at him.",
+        "One day, the teacher explained that scientists also ask questions.",
+        "Hassan began writing his questions in a notebook.",
+        "He searched for answers in books and asked his teachers.",
+        "Over time, he learned many new things.",
+        "Hassan discovered that a good question can be the beginning of a great discovery."
+    ]
+},
+
+{
+    id:12,
+    grade:4,
+    title:"The Team Project",
+    emoji:"🤝",
+    description:"Four students discover how different talents can work together.",
+    moral:"Teamwork becomes stronger when everyone contributes.",
+    text:[
+        "Four students had to prepare a school project.",
+        "Ayesha was good at drawing.",
+        "Omar liked writing.",
+        "Hina was good at organizing.",
+        "Usman enjoyed speaking.",
+        "Instead of doing the same work, each student used a different skill.",
+        "Their project was clear, colorful and interesting.",
+        "They learned that different talents can make one team stronger."
+    ]
+},
+
+{
+    id:13,
+    grade:5,
+    title:"The Digital Promise",
+    emoji:"💻",
+    description:"A student learns to use technology responsibly.",
+    moral:"Technology is useful when we use it wisely.",
+    text:[
+        "Hamid loved using the internet for learning.",
+        "He watched educational videos and searched for information.",
+        "One day, he received a message from an unknown person.",
+        "The person asked Hamid to share private information.",
+        "Hamid remembered his parents' advice.",
+        "He did not reply.",
+        "He told a trusted adult and blocked the account.",
+        "Hamid learned that being smart online means thinking before sharing."
+    ]
+},
+
+{
+    id:14,
+    grade:5,
+    title:"The Mountain Path",
+    emoji:"🏔️",
+    description:"A difficult journey teaches a child the value of persistence.",
+    moral:"Small steps can lead to big achievements.",
+    text:[
+        "Mariam wanted to reach a hilltop with her family.",
+        "The path was longer than she expected.",
+        "After walking for some time, she wanted to stop.",
+        "Her father told her to look only at the next few steps.",
+        "Mariam continued slowly.",
+        "After every difficult part, she rested and continued.",
+        "At last, she reached the top.",
+        "She looked at the view and realized that every small step had mattered."
+    ]
+},
+
+{
+    id:15,
+    grade:5,
+    title:"The Community Garden",
+    emoji:"🌻",
+    description:"Children work together to create a small garden.",
+    moral:"Working together can improve our community.",
+    text:[
+        "A group of children noticed an empty piece of land near their school.",
+        "They asked their teacher if they could turn it into a garden.",
+        "With permission and adult help, they planted flowers and vegetables.",
+        "Each child had a responsibility.",
+        "Some watered the plants.",
+        "Others removed weeds and kept the area clean.",
+        "After several weeks, the garden became beautiful.",
+        "The children learned that good changes begin with an idea and teamwork."
+    ]
+}
+
+];
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const storyList = document.getElementById("storyList");
+const searchInput = document.getElementById("search");
+const storyCount = document.getElementById("storyCount");
+
+const storyModal = document.getElementById("storyModal");
+const donationModal = document.getElementById("donationModal");
+
+const modalTitle = document.getElementById("modalTitle");
+const modalGrade = document.getElementById("modalGrade");
+const modalText = document.getElementById("modalText");
+const modalMoral = document.getElementById("modalMoral");
+
+const commentsList = document.getElementById("commentsList");
+
+let selectedGrade = "all";
+let currentStory = null;
+let readingSize = 18;
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+let favorites =
+    JSON.parse(localStorage.getItem("vbookFavorites") || "[]");
+
+
+function saveFavorites(){
+
+    localStorage.setItem(
+        "vbookFavorites",
+        JSON.stringify(favorites)
+    );
+
+}
+
+
+/* =========================================================
+   DISPLAY STORIES
+========================================================= */
+
+function displayStories(){
+
+    const query =
+        searchInput.value.trim().toLowerCase();
+
+    let filtered = stories.filter(story => {
+
+        const matchesSearch =
+            story.title.toLowerCase().includes(query) ||
+            story.description.toLowerCase().includes(query) ||
+            story.moral.toLowerCase().includes(query) ||
+            story.text.join(" ").toLowerCase().includes(query);
+
+        let matchesGrade = true;
+
+        if(selectedGrade !== "all" &&
+           selectedGrade !== "favorites"){
+
+            matchesGrade =
+                story.grade === Number(selectedGrade);
+
+        }
+
+        if(selectedGrade === "favorites"){
+
+            matchesGrade =
+                favorites.includes(story.id);
+
+        }
+
+        return matchesSearch && matchesGrade;
+
+    });
+
+
+    storyCount.textContent = stories.length;
+
+
+    if(filtered.length === 0){
+
+        storyList.innerHTML = `
+            <div class="empty">
+
+                <div>🔎</div>
+
+                <h3>No stories found</h3>
+
+                <p>
+                    Try another word or choose a different grade.
+                </p>
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    storyList.innerHTML = filtered.map(story => {
+
+        const isFavorite =
+            favorites.includes(story.id);
+
+        return `
+
+        <article class="story-card">
+
+            <div
+                class="story-cover"
+                style="
+                    background:
+                    linear-gradient(
+                        135deg,
+                        hsl(${story.id * 43},80%,72%),
+                        hsl(${story.id * 43 + 35},85%,60%)
+                    );
+                ">
+
+                <span class="grade-badge">
+                    Grade ${story.grade}
+                </span>
+
+                <button
+                    class="favorite ${isFavorite ? "active" : ""}"
+                    data-favorite="${story.id}"
+                    aria-label="Favorite story">
+
+                    ${isFavorite ? "❤️" : "♡"}
+
+                </button>
+
+                <span aria-hidden="true">
+                    ${story.emoji}
+                </span>
+
+            </div>
+
+
+            <div class="story-body">
+
+                <h3>${story.title}</h3>
+
+                <p class="story-description">
+                    ${story.description}
+                </p>
+
+                <div class="moral">
+
+                    🌟 <strong>Moral:</strong>
+                    ${story.moral}
+
+                </div>
+
+
+                <div class="story-actions">
+
+                    <button
+                        class="read-btn"
+                        data-read="${story.id}">
+
+                        📖 Read Story
+
+                    </button>
+
+                    <button
+                        class="audio-btn"
+                        data-audio="${story.id}">
+
+                        🔊 Listen
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   STORY EVENTS
+========================================================= */
+
+storyList.addEventListener("click", event => {
+
+    const favoriteBtn =
+        event.target.closest("[data-favorite]");
+
+    if(favoriteBtn){
+
+        const id =
+            Number(favoriteBtn.dataset.favorite);
+
+        toggleFavorite(id);
+
+        return;
+
+    }
+
+
+    const readBtn =
+        event.target.closest("[data-read]");
+
+    if(readBtn){
+
+        openStory(
+            Number(readBtn.dataset.read)
+        );
+
+        return;
+
+    }
+
+
+    const audioBtn =
+        event.target.closest("[data-audio]");
+
+    if(audioBtn){
+
+        const story =
+            stories.find(
+                s => s.id === Number(audioBtn.dataset.audio)
+            );
+
+        if(story){
+
+            speakStory(story);
+
+        }
+
+    }
+
+});
+
+
+function toggleFavorite(id){
+
+    if(favorites.includes(id)){
+
+        favorites =
+            favorites.filter(item => item !== id);
+
+    }else{
+
+        favorites.push(id);
+
+    }
+
+    saveFavorites();
+
+    displayStories();
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchInput.addEventListener(
+    "input",
+    displayStories
+);
+
+
+/* =========================================================
+   GRADE FILTERS
+========================================================= */
+
+document.querySelectorAll(".filter").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document
+            .querySelectorAll(".filter")
+            .forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+        button.classList.add("active");
+
+        selectedGrade =
+            button.dataset.grade;
+
+        displayStories();
+
+    });
+
+});
+
+
+/* =========================================================
+   OPEN STORY
+========================================================= */
+
+function openStory(id){
+
+    const story =
+        stories.find(s => s.id === id);
+
+    if(!story) return;
+
+    currentStory = story;
+
+    modalTitle.textContent =
+        `${story.emoji} ${story.title}`;
+
+    modalGrade.textContent =
+        `English Reading • Grade ${story.grade}`;
+
+    modalText.innerHTML =
+        story.text
+            .map(paragraph => `<p>${paragraph}</p>`)
+            .join("");
+
+    modalMoral.textContent =
+        story.moral;
+
+    storyModal.classList.add("show");
+
+    storyModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* =========================================================
+   CLOSE MODALS
+========================================================= */
+
+document.querySelectorAll("[data-close]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        closeModal(
+            document.getElementById(
+                button.dataset.close
+            )
+        );
+
+    });
+
+});
+
+
+function closeModal(modal){
+
+    modal.classList.remove("show");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow = "";
+
+    if(window.speechSynthesis){
+
+        window.speechSynthesis.cancel();
+
+    }
+
+}
+
+
+document.querySelectorAll(".modal").forEach(modal => {
+
+    modal.addEventListener("click", event => {
+
+        if(event.target === modal){
+
+            closeModal(modal);
+
+        }
+
+    });
+
+});
+
+
+document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape"){
+
+        document
+            .querySelectorAll(".modal.show")
+            .forEach(closeModal);
+
+    }
+
+});
+
+
+/* =========================================================
+   TEXT TO SPEECH
+========================================================= */
+
+function speakStory(story){
+
+    if(!("speechSynthesis" in window)){
+
+        alert(
+            "Sorry, your browser does not support Read Aloud."
+        );
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const text =
+        `${story.title}. ${story.text.join(" ")} Moral: ${story.moral}`;
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-US";
+
+    speech.rate = .85;
+
+    speech.pitch = 1.05;
+
+    window.speechSynthesis.speak(speech);
+
+}
+
+
+document
+    .getElementById("speakBtn")
+    .addEventListener("click", () => {
+
+        if(currentStory){
+
+            speakStory(currentStory);
+
+        }
+
+    });
+
+
+document
+    .getElementById("stopSpeakBtn")
+    .addEventListener("click", () => {
+
+        if(window.speechSynthesis){
+
+            window.speechSynthesis.cancel();
+
+        }
+
+    });
+
+
+/* =========================================================
+   FONT SIZE
+========================================================= */
+
+document
+    .getElementById("increaseFont")
+    .addEventListener("click", () => {
+
+        readingSize =
+            Math.min(readingSize + 2, 30);
+
+        document.documentElement
+            .style.setProperty(
+                "--reading-size",
+                readingSize + "px"
+            );
+
+    });
+
+
+document
+    .getElementById("decreaseFont")
+    .addEventListener("click", () => {
+
+        readingSize =
+            Math.max(readingSize - 2, 14);
+
+        document.documentElement
+            .style.setProperty(
+                "--reading-size",
+                readingSize + "px"
+            );
+
+    });
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+const darkModeBtn =
+    document.getElementById("darkModeBtn");
+
+const savedTheme =
+    localStorage.getItem("vbookTheme");
+
+if(savedTheme === "dark"){
+
+    document.body.classList.add("dark");
+
+    darkModeBtn.textContent = "☀️";
+
+}
+
+
+darkModeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const dark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "vbookTheme",
+        dark ? "dark" : "light"
+    );
+
+    darkModeBtn.textContent =
+        dark ? "☀️" : "🌙";
+
+});
+
+
+/* =========================================================
+   DONATION
+========================================================= */
+
+document
+    .getElementById("donationBtn")
+    .addEventListener("click", () => {
+
+        donationModal.classList.add("show");
+
+        donationModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+
+/* =========================================================
+   COPY ACCOUNT NUMBER
+========================================================= */
+
+document
+    .getElementById("copyAccount")
+    .addEventListener("click", async () => {
+
+        const account =
+            document.getElementById(
+                "accountNumber"
+            ).textContent.trim();
+
+        if(!account){
+
+            alert(
+                "Account number is not available."
+            );
+
+            return;
+
+        }
+
+        try{
+
+            await navigator.clipboard.writeText(account);
+
+            alert(
+                "Account number copied! ✅"
+            );
+
+        }catch(error){
+
+            alert(
+                "Please copy the account number manually."
+            );
+
+        }
+
+    });
+
+
+/* =========================================================
+   COMMENTS
+========================================================= */
+
+let comments =
+    JSON.parse(
+        localStorage.getItem("vbookComments") || "[]"
+    );
+
+
+function saveComments(){
+
+    localStorage.setItem(
+        "vbookComments",
+        JSON.stringify(comments)
+    );
+
+}
+
+
+function displayComments(){
+
+    if(comments.length === 0){
+
+        commentsList.innerHTML = `
+            <p style="
+                margin-top:20px;
+                color:var(--muted);
+            ">
+                No comments yet. Be the first to share your thoughts! 😊
+            </p>
+        `;
+
+        return;
+
+    }
+
+
+    commentsList.innerHTML =
+        comments
+        .slice()
+        .reverse()
+        .map(comment => `
+
+            <div class="comment">
+
+                <div class="comment-name">
+                    ${escapeHTML(comment.name)}
+                </div>
+
+                <div class="comment-date">
+                    ${escapeHTML(comment.date)}
+                </div>
+
+                <p>
+                    ${escapeHTML(comment.message)}
+                </p>
+
+                <div class="reply">
+                    <strong>VBook+:</strong>
+                    Thank you for your feedback! 😊
+                </div>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+
+document
+    .getElementById("commentForm")
+    .addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name")
+                .value.trim();
+
+        const message =
+            document.getElementById("msg")
+                .value.trim();
+
+        if(!name || !message){
+
+            alert(
+                "Please enter your name and comment."
+            );
+
+            return;
+
+        }
+
+
+        comments.push({
+
+            name:name,
+
+            message:message,
+
+            date:new Date().toLocaleString()
+
+        });
+
+
+        saveComments();
+
+        displayComments();
+
+        event.target.reset();
+
+        alert(
+            "Your comment has been posted! ❤️"
+        );
+
+    });
+
+
+/* =========================================================
+   HTML ESCAPE
+   Prevents user comments from injecting HTML/JS.
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const topBtn =
+    document.getElementById("topBtn");
+
+
+window.addEventListener("scroll", () => {
+
+    topBtn.style.display =
+        window.scrollY > 500
+            ? "block"
+            : "none";
+
+});
+
+
+topBtn.addEventListener("click", () => {
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+displayStories();
+
+displayComments();
+
+</script></body>
+</html>
